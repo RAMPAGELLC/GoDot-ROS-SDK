@@ -1,18 +1,28 @@
-# Copyright (©) 2023 RAMPAGE Interactive
-# RAMPAGE Online Services (ROS) API SDK for Nebula Labs Portal (nebula.rampage.place).
+# Copyright (©) 2024 RAMPAGE Interactive
+# RAMPAGE Gaming Online Services (ROS) API SDK for Nebula Labs Portal (nebula.rampage.place).
 
 @export var APP_ID: int = 0000000000000000000
+# Nebula Application Id
+
 @export var AUTHORIZATION_TOKEN: string = "UNSET"
-@export var ENVIORNMENT: string = "client" # client or server. Use client for P2P hosts.
+# If server set to your Application Secret, otherwise leave as "UNSET" and will be automatically set once the client
+# completes authorization from requestAuthorization() function.
+
+@export var ENVIORNMENT: string = "client"
+# Set environment as client or server. Use server strictly for dedicated servers, please use client for P2P Hosts as well.
+
+# DO NOT MODIFY BELOW HERE
+@export var PORT = 69420
+@export var PATH = "/ros/" + str(APP_ID)
+@export var URL = "http://localhost:" + str(PORT) + PATH
+@export var AUTHORIZE_URL = "https://nebula.rampage.place/api/v1/authorize/client?appid=" . str(APP_ID) . "&return=" + URL + "/auth/callback"
 
 func _ready() -> void:
     var server = HttpServer.new()
-    server.register_router("/rampageonlineservices/auth/callback", ROSAuthRouter.new())
+    server.register_router(PATH + "/auth/callback", ROSRouter_AuthCallback.new())
+    server.register_router(PATH + "/auth/authorize", ROSRouter_Login.new())
     add_child(server)
     server.start()
 
-func _proccess() -> void:
-    pass
-
 func requestAuthorization() -> void:
-    OS.shell_open("https://api.ros.rampage.host/v1/authorize/client?appid=" . str(APP_ID) . "&return=http://localhost:8080/rampageonlineservices/auth/callback")
+    OS.shell_open(AUTHORIZE_URL)

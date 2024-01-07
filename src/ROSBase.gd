@@ -1,5 +1,5 @@
-# Copyright (©) 2023 RAMPAGE Interactive
-# RAMPAGE Online Services (ROS) API SDK for Nebula Labs Portal (nebula.rampage.place).
+# Copyright (©) 2024 RAMPAGE Interactive
+# RAMPAGE Gaming Online Services (ROS) API SDK for Nebula Labs Portal (nebula.rampage.place).
 
 # TODO: PARAMS & HTTP REQUESTS.
 
