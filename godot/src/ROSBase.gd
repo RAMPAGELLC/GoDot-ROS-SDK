@@ -2,6 +2,8 @@
 # RAMPAGE Gaming Online Services (ROS) API SDK for Nebula Labs Portal (nebula.rampage.place).
 
 # TODO: PARAMS & HTTP REQUESTS.
+func _ready():
+	ROS.ROSBase = self
 
 func GET_PERMISSIONS()
     pass

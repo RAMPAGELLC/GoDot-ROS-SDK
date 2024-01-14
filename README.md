@@ -7,6 +7,9 @@ Development SDK for RAMPAGE Online Services (ROS), this SDk is developed for GoD
 GoDot ROS has dependencies that can be found at:
 https://github.com/deep-entertainment/godottpd
 
+> [!CAUTION]
+> Click code -> Download Zip, Releases page is old version from 2022 that doesnt have the latest 2023 commits.
+
 # Installation Guide
 > [!CAUTION]
 > The interactive portal nebula.rampage.place is not yet completed. Please use the legacy Nebula Application Manager at https://id.rampage.place/applications. Interaction with Nebula features like ROSBase (Nebula Cloud Databases) is not supported. The only way to utilize it is by using the Rich Nebula API. Find the documentation for the Nebula API at docs.rampage.place.
@@ -19,3 +22,9 @@ https://github.com/deep-entertainment/godottpd
 6. Navigate to path-to-project/RAMPAGEOnlineServices/RAMPAGEOnlineServices.gd and configure variables there.
 7. Visit id.rampage.place/register to create a RAMPAGE ID.
 8. Go to id.rampage.place/applications and create a Nebula RAMPAGE Application. Copy its application ID. It's recommended to use a dedicated application per project.
+
+# Example Usage
+```GDScript
+func foo():
+	var response = ROS.ROSAuth.AuthenticateClient()
+```
